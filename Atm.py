@@ -4,7 +4,7 @@ chance = 3
 
 while chance > 0:
     code = input('Enter your ATM Pin: ')
-    assert (len(code) == 4), 'Please Try Again and Give Only Digits'
+    assert (len(code) == 4), 'Please Try Again and Give 4 Only Digits'
     code = int(code)
     if code == password[-1]:
         print('Please select from the following options: ')
@@ -18,7 +18,9 @@ while chance > 0:
         if opt == 1:
             print('Your current balance is', balance[-1])
             resume = input('Press 0 to exit and 1 to continue banking ')
-            if resume == '0':
+            assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+            resume = int(resume)
+            if resume == 0 or resume > 1:
                 break
 
         elif opt == 2:
@@ -28,20 +30,26 @@ while chance > 0:
             if code1 == code:
                 print('Old Pin and New Pin must not be same')
                 resume = input('Press 0 to exit and 1 to continue banking ')
-                if resume == '0':
+                assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+                resume = int(resume)
+                if resume == 0 or resume > 1:
                     break
 
             elif code1 == code2:
                 print('Your pin is changed')
+                password[-1] = code2
                 resume = input('Press 0 to exit and 1 to continue banking ')
-                if resume == '0':
+                assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+                resume = int(resume)
+                if resume == 0 or resume > 1:
                     break
 
             else:
                 print('Pin and confirm Pin Must be same')
-                password[-1] = code2
                 resume = input('Press 0 to exit and 1 to continue banking ')
-                if resume == '0':
+                assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+                resume = int(resume)
+                if resume == 0 or resume > 1:
                     break
 
         elif opt == 3:
@@ -49,7 +57,9 @@ while chance > 0:
             balance[-1] = amt + balance[-1]
             print('your new balance is: ', balance[-1])
             resume = input('Press 0 to exit and 1 to continue banking ')
-            if resume == '0':
+            assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+            resume = int(resume)
+            if resume == 0 or resume > 1:
                 break
 
         elif opt == 4:
@@ -57,7 +67,9 @@ while chance > 0:
             if amt > balance[-1]:
                 print('insufficient balance')
                 resume = input('Press 0 to exit and 1 to continue banking ')
-                if resume == '0':
+                assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+                resume = int(resume)
+                if resume == 0 or resume > 1:
                     break
 
             else:
@@ -65,12 +77,22 @@ while chance > 0:
                 print('Your new balance is: ', balance[-1])
                 print('Please collect your card and cash before leaving the ATM')
                 resume = input('Press 0 to exit and 1 to continue banking ')
-                if resume == '0':
+                assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+                resume = int(resume)
+                if resume == 0 or resume > 1:
                     break
 
         elif opt == 5:
             print('Thankyou for banking with us. Have a nice day')
             break
+
+        else:
+            print('Please give proper input')
+            resume = input('Press 0 to exit and 1 to continue banking ')
+            assert (len(resume) == 1), 'Please Try Again and Give 1 Only Digits'
+            resume = int(resume)
+            if resume == 0 or resume > 1:
+                break
 
     else:
         chance -= 1
