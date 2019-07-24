@@ -13,7 +13,9 @@ while chance > 0:
         print('3. Press 3 to Deposit Money')
         print('4. Press 4 to Withdraw Money')
         print('5. Press 5 to Exit')
-        opt = int(input('Please enter the desired choice: '))
+        opt = input('Please enter the desired choice: ')
+        assert (len(opt) == 1), 'Please Try Again and Give 1 Only Digits'
+        opt = int(opt)
 
         if opt == 1:
             print('Your current balance is', balance[-1])
